@@ -4,6 +4,12 @@
     view="lHh Lpr fff"
     :left-class="{'bg-grey-2': true}"
   >
+  <div class="layout-padding docs-input row justify-center">
+    <div style="width: 500px; max-width: 90vw;">
+    <q-input v-model="email" type="email" float-label="Email" suffix="@gmail.com" clearable />
+    <q-input v-model="password" type="password" float-label="Password" />
+    </div>
+  </div>
     <q-toolbar slot="header" class="glossy">
       <q-btn
         flat
@@ -19,10 +25,10 @@
     </q-toolbar>
 
     <q-tabs slot="navigation" v-if="true">
-      <q-route-tab slot="title" icon="play_circle_outline" to="/showcase/layout/play-with-layout" replace label="Play with Layout" />
-      <q-route-tab slot="title" icon="view_array" to="/showcase/layout/drawer-panels" replace label="Drawer Panels" />
-      <q-route-tab slot="title" icon="pin_drop" to="/showcase/layout/fixed-positioning" replace label="Fixed Positioning" />
-      <q-route-tab slot="title" icon="play_for_work" to="/showcase/layout/floating-action-button" replace label="Floating Action Button" />
+      <q-route-tab slot="title" icon="accessibility" to="/case2" replace label="Evaluation" />
+      <q-route-tab slot="title" icon="view_array" to="/case2" replace label="Progress" />
+      <q-route-tab slot="title" icon="chat" to="/case1" replace label="Message" />
+      <q-route-tab slot="title" icon="play_circle_outline" to="/showcase/layout/floating-action-button" replace label="Videos" />
       <q-route-tab slot="title" icon="play_for_work" to="/showcase" label="Click me" />
     </q-tabs>
 
@@ -38,20 +44,20 @@
       <q-list no-border link inset-delimiter>
         <q-list-header>Essential Links</q-list-header>
         <q-item @click="launch('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
+          <q-item-side icon="accessibility" />
+          <q-item-main label="Evaluation" sublabel="Daily Evaluation of the patient" />
         </q-item>
         <q-item @click="launch('http://forum.quasar-framework.org')">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
+          <q-item-side icon="view_array" />
+          <q-item-main label="Progress" sublabel="Progress report of the patient" />
         </q-item>
-        <q-item @click="launch('https://gitter.im/quasarframework/Lobby')">
+        <q-item to="/case1">
           <q-item-side icon="chat" />
-          <q-item-main label="Gitter Channel" sublabel="Quasar Lobby" />
+          <q-item-main label="Message" sublabel="Quasar Lobby" />
         </q-item>
-        <q-item @click="launch('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
+        <q-item @click="launch('https://www.youtube.com/results?search_query=burn+care')">
+          <q-item-side icon="play_circle_outline" />
+          <q-item-main label="Videos" sublabel="Wound care and daily exercise" />
         </q-item>
       </q-list>
 
@@ -67,7 +73,7 @@
       </q-side-link>
 
 
-      
+
     </div>
 
     <!--
@@ -75,7 +81,7 @@
       <router-view /> component
       if using subRoutes
     -->
-    <router-view /> 
+    <router-view />
 <!--     <div class="layout-padding logo-container non-selectable no-pointer-events">
       <div class="logo" :style="position">
         <img src="~assets/quasar-logo-full.svg">
@@ -83,13 +89,10 @@
     </div> -->
 
 
-    <q-toolbar slot="footer">
-      <q-toolbar-title>
-        Footer
-      </q-toolbar-title>
-    </q-toolbar>
   </q-layout>
 </template>
+
+import './docs-input.styl'
 
 <script>
 import {
@@ -108,7 +111,8 @@ import {
   QItemMain,
   QSideLink,
   QTabs,
-  QRouteTab
+  QRouteTab,
+  QInput
 } from 'quasar'
 
 const
@@ -144,7 +148,8 @@ export default {
     QItemMain,
     QSideLink,
     QTabs,
-    QRouteTab
+    QRouteTab,
+    QInput
   },
   data () {
     return {
@@ -153,7 +158,11 @@ export default {
       moveX: 0,
       moveY: 0,
       rotateY: 0,
-      rotateX: 0
+      rotateX: 0,
+      text: 'text',
+      num: 5,
+      email: 'email',
+      password: 'password'
     }
   },
   computed: {

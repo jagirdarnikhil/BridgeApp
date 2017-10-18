@@ -25,7 +25,7 @@ export default new VueRouter({
     { path: '/',
       component: load('Main'),
       children: [
-        {path: 'showcase', component: load('showcase/case1')},
+        {path: 'case1', component: load('showcase/case1')},
         {path: 'case2', component: load('showcase/case2')}
       ]
     },
